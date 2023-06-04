@@ -1,1 +1,1319 @@
 
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+  <title>Sudoku Game</title>
+
+  <style>
+
+    body {
+
+      font-family: Arial, sans-serif;
+
+      text-align: center;<!DOCTYPE html>
+
+<html>
+
+<head>
+
+  <title>Sudoku Game</title>
+
+  <style>
+
+    body {
+
+      font-family: Arial, sans-serif;
+
+      text-align: center;
+
+    }
+
+    .sudoku-board {
+
+      display: inline-block;
+
+      margin: 20px;
+
+    }
+
+    .sudoku-cell {
+
+      width: 30px;
+
+      height: 30px;
+
+      line-height: 30px;
+
+      text-align: center;
+
+      border: 1px solid #ccc;
+
+      display: inline-block;
+
+      font-weight: bold;
+
+      font-size: 16px;
+
+    }
+
+    .sudoku-cell input {
+
+      width: 100%;
+
+      height: 100%;
+
+      text-align: center;
+
+      font-weight: bold;
+
+      font-size: 16px;
+
+      border: none;
+
+      padding: 0;
+
+      margin: 0;
+
+      background-color: #fff;
+
+    }
+
+    .btn {
+
+      display: inline-block;
+
+      padding: 10px 20px;
+
+      background-color: #4CAF50;
+
+      color: #fff;
+
+      text-decoration: none;
+
+      margin: 10px;
+
+      border-radius: 5px;
+
+    }
+
+  </style>
+
+</head>
+
+<body>
+
+  <h1>Sudoku Game</h1>
+
+  <div id="sudoku-board" class="sudoku-board"></div>
+
+  <div id="buttons">
+
+    <button class="btn" onclick="startGame('easy')">Easy</button>
+
+    <button class="btn" onclick="startGame('medium')">Medium</button>
+
+    <button class="btn" onclick="startGame('hard')">Hard</button>
+
+  </div>
+
+  <script>
+
+    var board;
+
+    function startGame(difficulty) {
+
+      clearBoard();
+
+      generateBoard(difficulty);
+
+      renderBoard();
+
+    }
+
+    function clearBoard() {
+
+      var boardContainer = document.getElementById("sudoku-board");
+
+      boardContainer.innerHTML = "";
+
+    }
+
+    function generateBoard(difficulty) {
+
+      // Generate a complete Sudoku board
+
+      // ... Your Sudoku generation logic here ...
+
+      // Set the generated board to the global variable
+
+      board = [
+
+        [5, 3, 0, 0, 7, 0, 0, 0, 0],
+
+        [6, 0, 0, 1, 9, 5, 0, 0, 0],
+
+        [0, 9, 8, 0, 0, 0, 0, 6, 0],
+
+        [8, 0, 0, 0, 6, 0, 0, 0, 3],
+
+        [4, 0, 0, 8, 0, 3, 0, 0, 1],
+
+        [7, 0, 0, 0, 2, 0, 0, 0, 6],
+
+        [0, 6, 0, 0, 0, 0, 2, 8, 0],
+
+        [0, 0, 0, 4, 1, 9, 0, 0, 5],
+
+        [0, 0, 0, 0, 8, 0, 0, 7, 9]
+
+      ];
+
+    }
+
+    function renderBoard() {
+
+      var boardContainer = document.getElementById("sudoku-board");
+
+      for (var i = 0; i < 9; i++) {
+
+        for (var j = 0; j < 9; j++) {
+
+          var cellValue = board[i][j];
+
+          var cell = document.createElement("div");
+
+          cell.className = "sudoku-cell";
+
+          if (cellValue !== 0) {
+
+            cell.textContent = cellValue;
+
+            cell.classList.add("predefined");
+
+          } else {
+
+            var input = document.createElement("input");
+
+            input.type = "text";
+
+            input.maxLength = 1;
+
+            input.addEventListener("input", validateInput);
+
+            cell.appendChild(input);
+
+          }
+
+          boardContainer.appendChild(cell);
+
+        }
+
+      }
+
+    }
+
+    function validateInput(event) {
+
+      var inputValue = parseInt(event.target.value);
+
+      if (isNaN(inputValue) || inputValue < 1 || inputValue > 9) {
+
+        event.target.value = "";
+
+      }
+
+    }
+
+  </script>
+
+</body>
+
+</html>
+
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+  <title>Sudoku Game</title>
+
+  <style>
+
+    body {
+
+      font-family: Arial, sans-serif;
+
+      text-align: center;
+
+    }
+
+    .sudoku-board {
+
+      display: inline-block;
+
+      margin: 20px;
+
+    }
+
+    .sudoku-cell {
+
+      width: 30px;
+
+      height: 30px;
+
+      line-height: 30px;
+
+      text-align: center;
+
+      border: 1px solid #ccc;
+
+      display: inline-block;
+
+      font-weight: bold;
+
+      font-size: 16px;
+
+    }
+
+    .sudoku-cell input {
+
+      width: 100%;
+
+      height: 100%;
+
+      text-align: center;
+
+      font-weight: bold;
+
+      font-size: 16px;
+
+      border: none;
+
+      padding: 0;
+
+      margin: 0;
+
+      background-color: #fff;
+
+    }
+
+    .btn {
+
+      display: inline-block;
+
+      padding: 10px 20px;
+
+      background-color: #4CAF50;
+
+      color: #fff;
+
+      text-decoration: none;
+
+      margin: 10px;
+
+      border-radius: 5px;
+
+    }
+
+  </style>
+
+</head>
+
+<body>
+
+  <h1>Sudoku Game</h1>
+
+  <div id="sudoku-board" class="sudoku-board"></div>
+
+  <div id="buttons">
+
+    <button class="btn" onclick="startGame('easy')">Easy</button>
+
+    <button class="btn" onclick="startGame('medium')">Medium</button>
+
+    <button class="btn" onclick="startGame('hard')">Hard</button>
+
+  </div>
+
+  <script>
+
+    var board;
+
+    function startGame(difficulty) {
+
+      clearBoard();
+
+      generateBoard(difficulty);
+
+      renderBoard();
+
+    }
+
+    function clearBoard() {
+
+      var boardContainer = document.getElementById("sudoku-board");
+
+      boardContainer.innerHTML = "";
+
+    }
+
+    function generateBoard(difficulty) {
+
+      // Generate a complete Sudoku board
+
+      // ... Your Sudoku generation logic here ...
+
+      // Set the generated board to the global variable
+
+      board = [
+
+        [5, 3, 0, 0, 7, 0, 0, 0, 0],
+
+        [6, 0, 0, 1, 9, 5, 0, 0, 0],
+
+        [0, 9, 8, 0, 0, 0, 0, 6, 0],
+
+        [8, 0, 0, 0, 6, 0, 0, 0, 3],
+
+        [4, 0, 0, 8, 0, 3, 0, 0, 1],
+
+        [7, 0, 0, 0, 2, 0, 0, 0, 6],
+
+        [0, 6, 0, 0, 0, 0, 2, 8, 0],
+
+        [0, 0, 0, 4, 1, 9, 0, 0, 5],
+
+        [0, 0, 0, 0, 8, 0, 0, 7, 9]
+
+      ];
+
+    }
+
+    function renderBoard() {
+
+      var boardContainer = document.getElementById("sudoku-board");
+
+      for (var i = 0; i < 9; i++) {
+
+        for (var j = 0; j < 9; j++) {
+
+          var cellValue = board[i][j];
+
+          var cell = document.createElement("div");
+
+          cell.className = "sudoku-cell";
+
+          if (cellValue !== 0) {
+
+            cell.textContent = cellValue;
+
+            cell.classList.add("predefined");
+
+          } else {
+
+            var input = document.createElement("input");
+
+            input.type = "text";
+
+            input.maxLength = 1;
+
+            input.addEventListener("input", validateInput);
+
+            cell.appendChild(input);
+
+          }
+
+          boardContainer.appendChild(cell);
+
+        }
+
+      }
+
+    }
+
+    function validateInput(event) {
+
+      var inputValue = parseInt(event.target.value);
+
+      if (isNaN(inputValue) || inputValue < 1 || inputValue > 9) {
+
+        event.target.value = "";
+
+      }
+
+    }
+
+  </script>
+
+</body>
+
+</html>
+
+    }
+
+    .sudoku-board {
+
+      display: inline-block;
+
+      margin: 20px;
+
+    }
+
+    .sudoku-cell {
+
+      width: 30px;
+
+      height: 30px;
+
+      line-height: 30px;
+
+      text-align: center;
+
+      border: 1px solid #ccc;
+
+      display: inline-block;
+
+      font-weight: bold;
+
+      font-size: 16px;
+
+    }
+
+    .sudoku-cell input {
+
+      width: 100%;
+
+      height: 100%;
+
+      text-align: center;
+
+      font-weight: bold;
+
+      font-size: 16px;
+
+      border: none;
+
+      padding: 0;
+
+      margin: 0;
+
+      background-color: #fff;
+
+    }
+
+    .btn {
+
+      display: inline-block;
+
+      padding: 10px 20px;
+
+      background-color: #4CAF50;
+
+      color: #fff;
+
+      text-decoration: none;
+
+      margin: 10px;
+
+      border-radius: 5px;
+
+    }
+
+  </style>
+
+</head>
+
+<body>
+
+  <h1>Sudoku Game</h1>
+
+  <div id="sudoku-board" class="sudoku-board"></div>
+
+  <div id="buttons">
+
+    <button class="btn" onclick="startGame('easy')">Easy</button>
+
+    <button class="btn" onclick="startGame('medium')">Medium</button>
+
+    <button class="btn" onclick="startGame('hard')">Hard</button>
+
+  </div>
+
+  <script>
+
+    var board;
+
+    function startGame(difficulty) {
+
+      clearBoard();
+
+      generateBoard(difficulty);
+
+      renderBoard();
+
+    }
+
+    function clearBoard() {
+
+      var boardContainer = document.getElementById("sudoku-board");
+
+      boardContainer.innerHTML = "";
+
+    }
+
+    function generateBoard(difficulty) {
+
+      // Generate a complete Sudoku board
+
+      // ... Your Sudoku generation logic here ...
+
+      // Set the generated board to the global variable
+
+      board = [
+
+        [5, 3, 0, 0, 7, 0, 0, 0, 0],
+
+        [6, 0, 0, 1, 9, 5, 0, 0, 0],
+
+        [0, 9, 8, 0, 0, 0, 0, 6, 0],
+
+        [8, 0, 0, 0, 6, 0, 0, 0, 3],
+
+        [4, 0, 0, 8, 0, 3, 0, 0, 1],
+
+        [7, 0, 0, 0, 2, 0, 0, 0, 6],
+
+        [0, 6, 0, 0, 0, 0, 2, 8, 0],
+
+        [0, 0, 0, 4, 1, 9, 0, 0, 5],
+
+        [0, 0, 0, 0, 8, 0, 0, 7, 9]
+
+      ];
+
+    }
+
+    function renderBoard() {
+
+      var boardContainer = document.getElementById("sudoku-board");
+
+      for (var i = 0; i < 9; i++) {
+
+        for (var j = 0; j < 9; j++) {
+
+          var cellValue = board[i][j];
+
+          var cell = document.createElement("div");
+
+          cell.className = "sudoku-cell";
+
+          if (cellValue !== 0) {
+
+            cell.textContent = cellValue;
+
+            cell.classList.add("predefined");
+
+          } else {
+
+            var input = document.createElement("input");
+
+            input.type = "text";
+
+            input.maxLength = 1;
+
+            input.addEventListener("input", validateInput);
+
+            cell.appendChild(input);
+
+          }
+
+          boardContainer.appendChild(cell);
+
+        }
+
+      }
+
+    }
+
+    function validateInput(event) {
+
+      var inputValue = parseInt(event.target.value);
+
+      if (isNaN(inputValue) || inputValue < 1 || inputValue > 9) {
+
+        event.target.value = "";
+
+      }
+
+    }
+
+  </script>
+
+</body>
+
+</html>
+
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+  <title>Sudoku Game</title>
+
+  <style>
+
+    body {
+
+      font-family: Arial, sans-serif;
+
+      text-align: center;
+
+    }
+
+    .sudoku-board {
+
+      display: inline-block;
+
+      margin: 20px;
+
+    }
+
+    .sudoku-cell {
+
+      width: 30px;
+
+      height: 30px;
+
+      line-height: 30px;
+
+      text-align: center;
+
+      border: 1px solid #ccc;
+
+      display: inline-block;
+
+      font-weight: bold;
+
+      font-size: 16px;
+
+    }
+
+    .sudoku-cell input {
+
+      width: 100%;
+
+      height: 100%;
+
+      text-align: center;
+
+      font-weight: bold;
+
+      font-size: 16px;
+
+      border: none;
+
+      padding: 0;
+
+      margin: 0;
+
+      background-color: #fff;
+
+    }
+
+    .btn {
+
+      display: inline-block;
+
+      padding: 10px 20px;
+
+      background-color: #4CAF50;
+
+      color: #fff;
+
+      text-decoration: none;
+
+      margin: 10px;
+
+      border-radius: 5px;
+
+    }
+
+  </style>
+
+</head>
+
+<body>
+
+  <h1>Sudoku Game</h1>
+
+  <div id="sudoku-board" class="sudoku-board"></div>
+
+  <div id="buttons">
+
+    <button class="btn" onclick="startGame('easy')">Easy</button>
+
+    <button class="btn" onclick="startGame('medium')">Medium</button>
+
+    <button class="btn" onclick="startGame('hard')">Hard</button>
+
+  </div>
+
+  <script>
+
+    var board;
+
+    function startGame(difficulty) {
+
+      clearBoard();
+
+      generateBoard(difficulty);
+
+      renderBoard();
+
+    }
+
+    function clearBoard() {
+
+      var boardContainer = document.getElementById("sudoku-board");
+
+      boardContainer.innerHTML = "";
+
+    }
+
+    function generateBoard(difficulty) {
+
+      // Generate a complete Sudoku board
+
+      // ... Your Sudoku generation logic here ...
+
+      // Set the generated board to the global variable
+
+      board = [
+
+        [5, 3, 0, 0, 7, 0, 0, 0, 0],
+
+        [6, 0, 0, 1, 9, 5, 0, 0, 0],
+
+        [0, 9, 8, 0, 0, 0, 0, 6, 0],
+
+        [8, 0, 0, 0, 6, 0, 0, 0, 3],
+
+        [4, 0, 0, 8, 0, 3, 0, 0, 1],
+
+        [7, 0, 0, 0, 2, 0, 0, 0, 6],
+
+        [0, 6, 0, 0, 0, 0, 2, 8, 0],
+
+        [0, 0, 0, 4, 1, 9, 0, 0, 5],
+
+        [0, 0, 0, 0, 8, 0, 0, 7, 9]
+
+      ];
+
+    }
+
+    function renderBoard() {
+
+      var boardContainer = document.getElementById("sudoku-board");
+
+      for (var i = 0; i < 9; i++) {
+
+        for (var j = 0; j < 9; j++) {
+
+          var cellValue = board[i][j];
+
+          var cell = document.createElement("div");
+
+          cell.className = "sudoku-cell";
+
+          if (cellValue !== 0) {
+
+            cell.textContent = cellValue;
+
+            cell.classList.add("predefined");
+
+          } else {
+
+            var input = document.createElement("input");
+
+            input.type = "text";
+
+            input.maxLength = 1;
+
+            input.addEventListener("input", validateInput);
+
+            cell.appendChild(input);
+
+          }
+
+          boardContainer.appendChild(cell);
+
+        }
+
+      }
+
+    }
+
+    function validateInput(event) {
+
+      var inputValue = parseInt(event.target.value);
+
+      if (isNaN(inputValue) || inputValue < 1 || inputValue > 9) {
+
+        event.target.value = "";
+
+      }
+
+    }
+
+  </script>
+
+</body>
+
+</html>
+
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+  <title>Sudoku Game</title>
+
+  <style>
+
+    body {
+
+      font-family: Arial, sans-serif;
+
+      text-align: center;
+
+    }
+
+    .sudoku-board {
+
+      display: inline-block;
+
+      margin: 20px;
+
+    }
+
+    .sudoku-cell {
+
+      width: 30px;
+
+      height: 30px;
+
+      line-height: 30px;
+
+      text-align: center;
+
+      border: 1px solid #ccc;
+
+      display: inline-block;
+
+      font-weight: bold;
+
+      font-size: 16px;
+
+    }
+
+    .sudoku-cell input {
+
+      width: 100%;
+
+      height: 100%;
+
+      text-align: center;
+
+      font-weight: bold;
+
+      font-size: 16px;
+
+      border: none;
+
+      padding: 0;
+
+      margin: 0;
+
+      background-color: #fff;
+
+    }
+
+    .btn {
+
+      display: inline-block;
+
+      padding: 10px 20px;
+
+      background-color: #4CAF50;
+
+      color: #fff;
+
+      text-decoration: none;
+
+      margin: 10px;
+
+      border-radius: 5px;
+
+    }
+
+  </style>
+
+</head>
+
+<body>
+
+  <h1>Sudoku Game</h1>
+
+  <div id="sudoku-board" class="sudoku-board"></div>
+
+  <div id="buttons">
+
+    <button class="btn" onclick="startGame('easy')">Easy</button>
+
+    <button class="btn" onclick="startGame('medium')">Medium</button>
+
+    <button class="btn" onclick="startGame('hard')">Hard</button>
+
+  </div>
+
+  <script>
+
+    var board;
+
+    function startGame(difficulty) {
+
+      clearBoard();
+
+      generateBoard(difficulty);
+
+      renderBoard();
+
+    }
+
+    function clearBoard() {
+
+      var boardContainer = document.getElementById("sudoku-board");
+
+      boardContainer.innerHTML = "";
+
+    }
+
+    function generateBoard(difficulty) {
+
+      // Generate a complete Sudoku board
+
+      // ... Your Sudoku generation logic here ...
+
+      // Set the generated board to the global variable
+
+      board = [
+
+        [5, 3, 0, 0, 7, 0, 0, 0, 0],
+
+        [6, 0, 0, 1, 9, 5, 0, 0, 0],
+
+        [0, 9, 8, 0, 0, 0, 0, 6, 0],
+
+        [8, 0, 0, 0, 6, 0, 0, 0, 3],
+
+        [4, 0, 0, 8, 0, 3, 0, 0, 1],
+
+        [7, 0, 0, 0, 2, 0, 0, 0, 6],
+
+        [0, 6, 0, 0, 0, 0, 2, 8, 0],
+
+        [0, 0, 0, 4, 1, 9, 0, 0, 5],
+
+        [0, 0, 0, 0, 8, 0, 0, 7, 9]
+
+      ];
+
+    }
+
+    function renderBoard() {
+
+      var boardContainer = document.getElementById("sudoku-board");
+
+      for (var i = 0; i < 9; i++) {
+
+        for (var j = 0; j < 9; j++) {
+
+          var cellValue = board[i][j];
+
+          var cell = document.createElement("div");
+
+          cell.className = "sudoku-cell";
+
+          if (cellValue !== 0) {
+
+            cell.textContent = cellValue;
+
+            cell.classList.add("predefined");
+
+          } else {
+
+            var input = document.createElement("input");
+
+            input.type = "text";
+
+            input.maxLength = 1;
+
+            input.addEventListener("input", validateInput);
+
+            cell.appendChild(input);
+
+          }
+
+          boardContainer.appendChild(cell);
+
+        }
+
+      }
+
+    }
+
+    function validateInput(event) {
+
+      var inputValue = parseInt(event.target.value);
+
+      if (isNaN(inputValue) || inputValue < 1 || inputValue > 9) {
+
+        event.target.value = "";
+
+      }
+
+    }
+
+  </script>
+
+</body>
+
+</html>
+
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+  <title>Sudoku Game</title>
+
+  <style>
+
+    body {
+
+      font-family: Arial, sans-serif;
+
+      text-align: center;
+
+    }
+
+    .sudoku-board {
+
+      display: inline-block;
+
+      margin: 20px;
+
+    }
+
+    .sudoku-cell {
+
+      width: 30px;
+
+      height: 30px;
+
+      line-height: 30px;
+
+      text-align: center;
+
+      border: 1px solid #ccc;
+
+      display: inline-block;
+
+      font-weight: bold;
+
+      font-size: 16px;
+
+    }
+
+    .sudoku-cell input {
+
+      width: 100%;
+
+      height: 100%;
+
+      text-align: center;
+
+      font-weight: bold;
+
+      font-size: 16px;
+
+      border: none;
+
+      padding: 0;
+
+      margin: 0;
+
+      background-color: #fff;
+
+    }
+
+    .btn {
+
+      display: inline-block;
+
+      padding: 10px 20px;
+
+      background-color: #4CAF50;
+
+      color: #fff;
+
+      text-decoration: none;
+
+      margin: 10px;
+
+      border-radius: 5px;
+
+    }
+
+  </style>
+
+</head>
+
+<body>
+
+  <h1>Sudoku Game</h1>
+
+  <div id="sudoku-board" class="sudoku-board"></div>
+
+  <div id="buttons">
+
+    <button class="btn" onclick="startGame('easy')">Easy</button>
+
+    <button class="btn" onclick="startGame('medium')">Medium</button>
+
+    <button class="btn" onclick="startGame('hard')">Hard</button>
+
+  </div>
+
+  <script>
+
+    var board;
+
+    function startGame(difficulty) {
+
+      clearBoard();
+
+      generateBoard(difficulty);
+
+      renderBoard();
+
+    }
+
+    function clearBoard() {
+
+      var boardContainer = document.getElementById("sudoku-board");
+
+      boardContainer.innerHTML = "";
+
+    }
+
+    function generateBoard(difficulty) {
+
+      // Generate a complete Sudoku board
+
+      // ... Your Sudoku generation logic here ...
+
+      // Set the generated board to the global variable
+
+      board = [
+
+        [5, 3, 0, 0, 7, 0, 0, 0, 0],
+
+        [6, 0, 0, 1, 9, 5, 0, 0, 0],
+
+        [0, 9, 8, 0, 0, 0, 0, 6, 0],
+
+        [8, 0, 0, 0, 6, 0, 0, 0, 3],
+
+        [4, 0, 0, 8, 0, 3, 0, 0, 1],
+
+        [7, 0, 0, 0, 2, 0, 0, 0, 6],
+
+        [0, 6, 0, 0, 0, 0, 2, 8, 0],
+
+        [0, 0, 0, 4, 1, 9, 0, 0, 5],
+
+        [0, 0, 0, 0, 8, 0, 0, 7, 9]
+
+      ];
+
+    }
+
+    function renderBoard() {
+
+      var boardContainer = document.getElementById("sudoku-board");
+
+      for (var i = 0; i < 9; i++) {
+
+        for (var j = 0; j < 9; j++) {
+
+          var cellValue = board[i][j];
+
+          var cell = document.createElement("div");
+
+          cell.className = "sudoku-cell";
+
+          if (cellValue !== 0) {
+
+            cell.textContent = cellValue;
+
+            cell.classList.add("predefined");
+
+          } else {
+
+            var input = document.createElement("input");
+
+            input.type = "text";
+
+            input.maxLength = 1;
+
+            input.addEventListener("input", validateInput);
+
+            cell.appendChild(input);
+
+          }
+
+          boardContainer.appendChild(cell);
+
+        }
+
+      }
+
+    }
+
+    function validateInput(event) {
+
+      var inputValue = parseInt(event.target.value);
+
+      if (isNaN(inputValue) || inputValue < 1 || inputValue > 9) {
+
+        event.target.value = "";
+
+      }
+
+    }
+
+  </script>
+
+</body>
+
+</html>
+
